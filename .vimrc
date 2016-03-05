@@ -95,5 +95,10 @@ endif
 hi def link jsObjectKey Label
 
 """"""""""""""""""""""""""
+" Other
+""""""""""""""""""""""""""
+set directory^=~/.vim/_temp//      " where to put swap files."
+
+""""""""""""""""""""""""""
 " End
 """"""""""""""""""""""""""
