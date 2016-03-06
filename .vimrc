@@ -59,6 +59,8 @@ let g:syntastic_filetype_map = {
 " Use these checkers (handlebars is a different checker, not required for the
 " hbstidy plugin)
 let g:syntastic_handlebars_checkers  = ['handlebars', 'hbstidy']
+" eslint checker
+let g:syntastic_javascript_checkers = ['eslint']
 
 """"""""""""""""""""""""""
 " Warn when columns > 80
