@@ -76,6 +76,7 @@ match OverLength /\%81v.\+/
 let g:NERDTreeWinPos = "left"
 au VimEnter * NERDTree
 let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.DS_Store$', '\.git$']
 
 """"""""""""""""""""""""""
 " Status line
