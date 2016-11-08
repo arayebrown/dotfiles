@@ -1,16 +1,16 @@
 set nocompatible   " be iMproved
 filetype off       " required!
 
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Bundle 'VundleVim/Vundle.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdtree'
-Bundle 'jlanzarotta/bufexplorer'
+Bundle 'jlanzarotta/bufexplorer.vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'easymotion/vim-easymotion'
 Bundle 'jelera/vim-javascript-syntax'
@@ -19,6 +19,11 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Raimondi/delimitMate'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'davidosomething/syntastic-hbstidy'
+Bundle 'godlygeek/tabular'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'editorconfig/editorconfig-vim'
+
+call vundle#end()
 
 filetype plugin indent on  " required!
 
@@ -26,6 +31,7 @@ filetype plugin indent on  " required!
 " https://github.com/altercation/vim-colors-solarized
 
 syntax enable
+
 let g:solarized_termcolors=256
 set t_Co=256
 set background=dark
@@ -50,6 +56,12 @@ imap <C-c> <CR><Esc>O
 " Enables handlebars syntax highlighting
 au BufRead,BufNewFile *.hbs setfiletype mustache
 
+" Auto wrap md files
+au BufRead,BufNewFile *.md setlocal textwidth=80
+
+" Enable spell check
+autocmd BufRead,BufNewFile *.md setlocal spell
+
 " Map some filetypes, e.g. turn off html checkers on handlebars (I'm using my
 " hbstidy instead of html tidy)
 let g:syntastic_filetype_map = {
@@ -59,8 +71,11 @@ let g:syntastic_filetype_map = {
 " Use these checkers (handlebars is a different checker, not required for the
 " hbstidy plugin)
 let g:syntastic_handlebars_checkers  = ['handlebars', 'hbstidy']
-" eslint checker
-let g:syntastic_javascript_checkers = ['eslint']
+" lint checker
+let g:syntastic_javascript_checkers = ['standard']
+
+" autocmd bufwritepost *.js silent !standard-format -w %
+set autoread
 
 """"""""""""""""""""""""""
 " Warn when columns > 80
@@ -102,6 +117,7 @@ hi def link jsObjectKey Label
 " Other
 """"""""""""""""""""""""""
 set directory^=~/.vim/_temp//      " where to put swap files."
+let g:vim_markdown_folding_disabled = 1
 
 """"""""""""""""""""""""""
 " End
